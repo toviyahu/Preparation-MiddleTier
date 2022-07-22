@@ -22,6 +22,13 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseRouting();
+app.MapGet("/", () => "Hello World!");
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapHealthChecks("/healthz").RequireAuthorization();
 app.MapGet("/", () => "Hello World!");
 
 app.Run();
